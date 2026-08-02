@@ -1,4 +1,4 @@
-# QuarterFlow (Vision-project)
+# vizion project
 
 A planner for college students on semester or quarter systems — tracks
 courses, assignments, and workload so busy weeks don't sneak up on you.
