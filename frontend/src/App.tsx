@@ -1,5 +1,6 @@
 import { useState, FormEvent } from "react";
 import { login } from "./api/auth";
+import './App.css';
 
 function App() {
   const [email, setEmail] = useState("");
@@ -23,24 +24,17 @@ function App() {
   }
 
   return (
-    <div
+    <div className="login-form"
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
       }}
     >
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "0.75rem",
-          width: "280px",
-        }}
-      >
-        <h1 style={{ textAlign: "center", fontSize: "1.25rem" }}>Log in</h1>
+      <form onSubmit={handleSubmit}>
+        
+        <div>
+          <h1>Log in</h1>
 
         <input
           type="email"
@@ -48,7 +42,6 @@ function App() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          style={{ padding: "0.5rem" }}
         />
 
         <input
@@ -57,14 +50,14 @@ function App() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          style={{ padding: "0.5rem" }}
         />
 
         {error && <p style={{ color: "red", fontSize: "0.875rem" }}>{error}</p>}
 
-        <button type="submit" disabled={loading} style={{ padding: "0.5rem" }}>
+        <button type="submit" disabled={loading}>
           {loading ? "Logging in..." : "Log in"}
         </button>
+        </div>
       </form>
     </div>
   );
