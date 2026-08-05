@@ -25,38 +25,36 @@ function App() {
 
   return (
     <div className="login-form"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
     >
       <form onSubmit={handleSubmit}>
-        
-        <div>
-          <h1>Log in</h1>
+        <div className="form-container first-container">
+          <h1>Welcome to QuarterFlow</h1>
+          <p>QuarterFlow is an intelligent planner designed for college students to manage courses, track assignments, and visualize workload ahead of busy terms.</p>
+        </div>
+        <div className="form-container second-container">
+          <h1>LOG IN</h1>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
-        {error && <p style={{ color: "red", fontSize: "0.875rem" }}>{error}</p>}
+          {error && <p style={{ color: "red", fontSize: "0.875rem" }}>{error}</p>}
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Log in"}
-        </button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Logging in..." : "LOGIN"}
+          </button>
         </div>
       </form>
     </div>
