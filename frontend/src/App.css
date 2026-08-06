@@ -6,60 +6,80 @@ body{
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    background: #1780E3;
-    background: linear-gradient(172deg, rgba(23, 128, 227, 1) 0%, rgba(129, 18, 163, 1) 99%);
+    background: #c0392b;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8e44ad, #c0392b);  
+    background: linear-gradient(to right, #8e44ad, #c0392b); 
     font-family: 'Roboto', sans-serif;
 }
 
-form{
-    display: flex;
+h1{
+    color: white;
+    font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 .login-form{
-    /* padding: 40px 30px; */
+    /* padding: 40px 30px; 
+    display: flex;
+    width: 100%;
+    max-width: 900px;
     height: auto;
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;*/
+    width: 70vw; 
+    height: 70vh;
+    display: flex;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 16px;
 }
 
-h1{
-    text-align: center;
-    font-size: 1.25rem; 
-    color: white;
-}
-
-form .form-container{
+.form-container{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    width: 280px;
-}
-
-form .first-container{
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    background: white
+    gap: 0.9rem;
 }
 
 .first-container h1{
-    font-size: 1.5rem;
+    font-size: 3rem;
     font-weight: bold;
-    color: rgb(0, 0, 0);
+    letter-spacing: 2px;
 }
 
-form .second-container{
-   padding: 10rem 4rem;
-}
-
-button{
+.form-container p{
+    max-width: 622px;
+    line-height: 1.5;
     color: white;
-    background: #1780E3;
-    background: linear-gradient(172deg, rgba(23, 128, 227, 1) 0%, rgba(129, 18, 163, 1) 99%);
+    font-size: 1.2rem;
 }
+
+.first-container{
+    width: 60vw;
+    padding-left: 45px;
+    display: flex;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+
+.second-container{
+    width: 40vw;
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 form input{
     padding: 0.5rem 0.8rem; 
     border-radius: 16px;
@@ -70,5 +90,10 @@ button{
     width: fit-content;
     padding: 0.5rem 0.8rem;
     border-radius: 16px;
-    border: none;
+    border: transparent;
+    color: white;
+    background: #c0392b;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8e44ad, #c0392b);  
+    background: linear-gradient(to right, #8e44ad, #885853);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
