@@ -2,14 +2,30 @@ body{
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     box-sizing: border-box;
     background: #c0392b;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #8e44ad, #c0392b);  
     background: linear-gradient(to right, #8e44ad, #c0392b); 
     font-family: 'Roboto', sans-serif;
+}
+
+.main-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.main-heading{
+    font-size: 6rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    margin-top: 0rem;
+    color: transparent;
+    -webkit-text-stroke: 3px white;
+    text-stroke: 1px white;
 }
 
 h1{
@@ -18,16 +34,6 @@ h1{
 }
 
 .login-form{
-    /* padding: 40px 30px; 
-    display: flex;
-    width: 100%;
-    max-width: 900px;
-    height: auto;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 16px;*/
     width: 70vw; 
     height: 70vh;
     display: flex;
@@ -38,6 +44,44 @@ h1{
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 16px;
 }
+
+/* .login-form::before{
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        transparent 70%,
+        rgba(255, 255, 255, 0.8) 90%,
+        #ffffff 100%
+        );
+    animation: rotateLight 4s linear infinite;
+} */
+
+/* .login-form::after{
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: 14px;
+    background: #18181b;
+    z-index: 2;
+}    */
+
+/* .login-form > *{
+    position: relative;
+    z-index: 3;
+}
+
+@keyframes rotateLight{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+} */
 
 .form-container{
     display: flex;
@@ -96,4 +140,19 @@ button{
     background: -webkit-linear-gradient(to right, #8e44ad, #c0392b);  
     background: linear-gradient(to right, #8e44ad, #885853);
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.google-button{
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0rem 0rem;
+    cursor: pointer;
+}
+
+.google-button img{
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
 }

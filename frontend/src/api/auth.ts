@@ -30,6 +30,11 @@ export function login(email: string, password: string): Promise<AuthResponse> {
   }).then(handle);
 }
 
+//Call the API from the google account created
+export function getGoogleSignInUrl() {
+  return `${API_URL}/api/auth/google`;
+}
+
 export function me(token: string) {
   return fetch(`${API_URL}/api/auth/me`, {
     headers: { Authorization: `Bearer ${token}` },
