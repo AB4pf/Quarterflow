@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
+import axios from "axios";
 import pool from "../config/db";
 import { signToken } from "../utils/jwt";
 
@@ -81,4 +82,61 @@ export async function me(req: Request, res: Response) {
   }
 
   return res.json({ user: users[0] });
+}
+
+export async function googleAuth(req: Request, res: Response) {
+  const { access_token } = req.body;
+
+  if (!access_token || typeof access_token !== "string") {
+    return res.status(400).json({ error: "access_token is required" });
+  }
+
+  try {
+    // Verify token with Google and get user info
+    const googleRes = await axios.get(
+      `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${encodeURIComponent(
+        access_token
+      )}`
+    );
+
+    const g = googleRes.data as { email?: string; name?: string; sub?: string };
+
+    if (!g || !g.email) {
+      return res.status(400).json({ error: "Unable to verify Google token" });
+    }
+
+    const email = g.email;
+    const name = g.name || "";
+
+    // Find or create user
+    const [rows] = await pool.query("SELECT * FROM users WHERE email = ?", [email]);
+    const users = rows as UserRow[];
+
+    let user: UserRow;
+
+    if (users.length > 0) {
+      user = users[0];
+    } else {
+      // For OAuth users we still need a non-null password_hash column; store a random hash
+      const randomHash = await bcrypt.hash(Math.random().toString(36), 10);
+      const [result]: any = await pool.query(
+        "INSERT INTO users (email, password_hash, name) VALUES (?, ?, ?)",
+        [email, randomHash, name || email]
+      );
+
+      user = {
+        id: result.insertId,
+        email,
+        password_hash: randomHash,
+        name: name || email,
+      };
+    }
+
+    const token = signToken({ userId: user.id, email: user.email });
+
+    return res.json({ token, user: { id: user.id, email: user.email, name: user.name } });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Google authentication failed" });
+  }
 }
